@@ -1,0 +1,77 @@
+html { 
+	height: 100% 
+}
+
+body { 
+	height: 100%; 
+	width: 100%; 
+	margin: 0px; 
+	padding: 0px;
+	background-color: #E5E0D9;
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+input, select {
+	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+div{
+	font-size: 1em; 
+}
+
+#header {
+	/*position: absolute; 
+	margin:0px; 
+	padding:0px; */
+	width: 100%;
+	height: 140px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+	#search {
+		float: left;
+		width: 400px; /* wtf why can't this be 50% */
+		height: 100%;
+		padding-left: 10px;
+	}
+		#search #name {
+			width: 300px;
+		}
+	
+	#results {
+		float: right;
+		height: 100%;
+		text-align: right;
+	}
+		#results #names {
+			width: 350px;
+			height: 125px;
+			border: 1px;
+		}
+
+		#results #addresses {
+			width: 200px;
+			height: 125px;
+			border: 1px;
+		}
+	 
+#map_canvas {
+	/*position:absolute; 
+	top:140px;
+	bottom:0; 
+	left:0; 
+	right:0;*/
+	height: 100%;
+	border-top: 1px black solid;
+}
+
+
+/* What is this stuff?
+#widget-docs .ui-widget { font-family: Arial,sans-serif; font-size: .75em; }
+#widget-docs .ui-widget input, #widget-docs .ui-widget select, #widget-docs .ui-widget textarea, #widget-docs .ui-widget button { font-family: Arial,sans-serif; font-size: .75em; }
+#widget-docs .ui-widget-header { border: 1px solid #ffffff; background: #464646 url(images/464646_40x100_textures_01_flat_100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
+#widget-docs .ui-widget-header a { color: #ffffff; }
+#widget-docs .ui-widget-content { border: 1px solid #ffffff; background: #ffffff url(images/ffffff_40x100_textures_01_flat_75.png) 50% 50% repeat-x; color: #222222; }
+#widget-docs .ui-widget-content a { color: #222222; }
+*/

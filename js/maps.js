@@ -51,6 +51,8 @@ $(function initialize() {
 		title: obj.address});
 
 	    google.maps.event.addListener(m, 'click', function() {
+		$.publish("/local/map/select", [ obj ]);
+
 		$.map(windows, function( win ) {
 		    win.close();
 		});

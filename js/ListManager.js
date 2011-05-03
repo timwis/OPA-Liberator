@@ -32,6 +32,11 @@
 	},
 
 	select: function(obj) {
+	    this.selectNoUpdate(obj);
+	    this.uchange([obj]);
+	},
+
+       selectNoUpdate: function(obj) {
 	    $(this.elem).children("option").each(function() {
 		q = $(this)
 		q.removeAttr("selected");
@@ -39,8 +44,6 @@
 		    q.attr('selected','selected');
 		}
 	    });
-
-	    this.uchange([obj]);
 	},
 
 	removeObject: function(obj) {

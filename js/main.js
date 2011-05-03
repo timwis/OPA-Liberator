@@ -20,6 +20,10 @@ $.subscribe("/ajax/address/update", function (objs) {
 		}));
     });
 
+$.subscribe("/local/map/select", function( obj ) {
+    l.selectNoUpdate(obj.address);
+});
+
 $(function() {
 	$( "#properties" ).change(function() {
 		$( "#properties" ).children("option:selected").each(function() {

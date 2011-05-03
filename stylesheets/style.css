@@ -1,77 +1,57 @@
-html { 
-	height: 100% 
+html {
+  height: auto;
 }
 
-body { 
-	height: 100%; 
-	width: 100%; 
-	margin: 0px; 
-	padding: 0px;
-	background-color: #E5E0D9;
-	font-family: 'Helvetica', 'Arial', sans-serif;
+body {
+  height: auto;
+  margin: 0;
 }
 
-input, select {
-	font-family: 'Helvetica', 'Arial', sans-serif;
+#canvas_holder {
+    padding-bottom: 20px;
 }
 
-div{
-	font-size: 1em; 
+#map_canvas {
+  width: 100%;
+  height: 600px;
 }
 
 #header {
-	/*position: absolute; 
-	margin:0px; 
-	padding:0px; */
-	width: 100%;
-	height: 140px;
-	overflow: hidden;
-	white-space: nowrap;
+    padding-top: 20px;
+
+  -moz-border-radius-topright: 2em;
+  -moz-border-radius-topleft: 2em;
+  -webkit-border-top-left-radius: 2em;
+  -webkit-border-top-right-radius: 2em;
+
+  text-align: center; 
+  background-color: #88B541;
 }
 
-	#search {
-		float: left;
-		width: 400px; /* wtf why can't this be 50% */
-		height: 100%;
-		padding-left: 10px;
-	}
-		#search #name {
-			width: 300px;
-		}
-	
-	#results {
-		float: right;
-		height: 100%;
-		text-align: right;
-	}
-		#results #names {
-			width: 350px;
-			height: 125px;
-			border: 1px;
-		}
-
-		#results #addresses {
-			width: 200px;
-			height: 125px;
-			border: 1px;
-		}
-	 
-#map_canvas {
-	/*position:absolute; 
-	top:140px;
-	bottom:0; 
-	left:0; 
-	right:0;*/
-	height: 100%;
-	border-top: 1px black solid;
+#owner {
+  width: 100%;
 }
 
+#properties {
+  width: 200px;
+  height: 500px;
+}
 
-/* What is this stuff?
-#widget-docs .ui-widget { font-family: Arial,sans-serif; font-size: .75em; }
-#widget-docs .ui-widget input, #widget-docs .ui-widget select, #widget-docs .ui-widget textarea, #widget-docs .ui-widget button { font-family: Arial,sans-serif; font-size: .75em; }
-#widget-docs .ui-widget-header { border: 1px solid #ffffff; background: #464646 url(images/464646_40x100_textures_01_flat_100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }
-#widget-docs .ui-widget-header a { color: #ffffff; }
-#widget-docs .ui-widget-content { border: 1px solid #ffffff; background: #ffffff url(images/ffffff_40x100_textures_01_flat_75.png) 50% 50% repeat-x; color: #222222; }
-#widget-docs .ui-widget-content a { color: #222222; }
-*/
+.container {
+    
+  -webkit-border-radius: 2em;
+  -moz-border-radius: 2em;
+  
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+ 
+  background: #8b8b8b; /* for non-css3 browsers */
+  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#7a7a7a'); /* for IE */
+background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#dfdfdf)); /* for webkit browsers */
+  background: -moz-linear-gradient(top,  #f4f4f4,  #dfdfdf); /* for firefox 3.6+ */
+ 
+}
+
+h1 {
+  color: white;
+}

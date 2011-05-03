@@ -15,22 +15,25 @@ function requestProperties(who) {
 
 var l = new ListManager("#properties", function () {});
 
-// Wire up events...
-$.subscribe("/ajax/address/update", function (objs) {
-    l.setObjects($.map(objs, function( obj ) {
-	return obj.address;
-    }));
-});
-
-$.subscribe("/ajax/address/update", function( objs ) {
-    $(".loader").hide();
-});
-
-$.subscribe("/local/map/select", function( obj ) {
-    l.selectNoUpdate(obj.address);
-});
-
 $(function() {
+
+    // Wire up events...
+    $.subscribe("/ajax/address/update", function (objs) {
+	l.setObjects($.map(objs, function( obj ) {
+	    return obj.address;
+	}));
+    });
+
+    $.subscribe("/ajax/address/update", function( objs ) {
+	errors.reset();
+	$(".loader").hide();
+    });
+
+    $.subscribe("/local/map/select", function( obj ) {
+	l.selectNoUpdate(obj.address);
+    });
+
+    var errors = new ErrorHandler($(".errors"));
     $(".loader").hide(); // start out hidden
 
     $( "#properties" ).change(function() {
@@ -57,6 +60,13 @@ $(function() {
 		    owner: request.term
 		},
 		success: function( data ) {
+		    if (typeof(data) == "undefined") {
+			$( ".loader" ).hide();
+			$.publish("/ajax/address/update", [[]]);
+			errors.addError("No owners found");
+			return;
+		    }
+
 		    response( $.map( data, function( item ) {
 			return {
 			    label: item.owner, 
@@ -73,7 +83,6 @@ $(function() {
 
 	    if (ui.item) {
 		requestProperties(ui.item.label);
-		//m.addObject(ui.item.label);
 	    }
 	},
 	open: function() {

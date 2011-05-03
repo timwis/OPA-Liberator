@@ -8,11 +8,23 @@ var ErrorHandler = Class.extend({
     },
 
     render: function() {
+	var elem = this.elem;
 	elem.empty();
 	$.map(this.errors, function( error ) {
-	    elem.append('<div class="error">' + "");
+	    elem.append('<div class="error">' + error + '</div>');
 	});
-    }});
+    },
+
+    reset: function() {
+	this.errors.length = 0;
+	this.render();
+    },
+
+    addError: function( err ) {
+	this.errors.push(err);
+	this.render();
+    }
+});
 
    
     

@@ -1,4 +1,6 @@
 function requestProperties(who) {
+    $( ".loader" ).show();
+
     $.ajax({
 	url: "http://opa.timwis.com/fetch.php",
 	dataType: "jsonp",
@@ -20,11 +22,17 @@ $.subscribe("/ajax/address/update", function (objs) {
     }));
 });
 
+$.subscribe("/ajax/address/update", function( objs ) {
+    $(".loader").hide();
+});
+
 $.subscribe("/local/map/select", function( obj ) {
     l.selectNoUpdate(obj.address);
 });
 
 $(function() {
+    $(".loader").hide(); // start out hidden
+
     $( "#properties" ).change(function() {
 	$( "#properties" ).children("option:selected").each(function() {
 	    $.publish("/local/address/select", [$(this).text()]);
@@ -40,6 +48,8 @@ $(function() {
 
     $( "#owner" ).autocomplete({
 	source: function( request, response ) {
+	    $( ".loader" ).show();
+
 	    $.ajax({
 		url: "http://opa.timwis.com/fetch.php", 
 		dataType: "jsonp",
@@ -67,6 +77,7 @@ $(function() {
 	    }
 	},
 	open: function() {
+	    $( ".loader" ).hide();
 	    $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
 	},
 	close: function() {

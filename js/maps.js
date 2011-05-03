@@ -14,6 +14,9 @@ $(function initialize() {
 	for(var m in markers) {
 	    marker = markers[m];
 	    if (m == addr) {
+		map.setZoom(18);
+		map.setCenter(marker.getPosition());
+
 		google.maps.event.trigger(marker, "click");
 	    }
 	}
@@ -28,6 +31,7 @@ $(function initialize() {
 	markers.length = 0;
 
 	var bounds = new google.maps.LatLngBounds();
+	var windows = [];
 
 	$.map(objs, function ( obj ) {
 	    var lat = obj.lat;
@@ -47,13 +51,17 @@ $(function initialize() {
 		title: obj.address});
 
 	    google.maps.event.addListener(m, 'click', function() {
-		map.setZoom(18);
-		map.setCenter(ll);
+		$.map(windows, function( win ) {
+		    win.close();
+		});
+		
+		windows.length = 0;
 
 		var iwin = new google.maps.InfoWindow({
 		    content: '<a href="http://opa.phila.gov/opa.apps/Search/SearchResults.aspx?id=' + obj.tencode + '">' + obj.address + ' Philadelphia PA</a>'});
 
 		iwin.open(map, m);
+		windows.push(iwin);
 	    });
 
 	    markers[obj.address] = m;

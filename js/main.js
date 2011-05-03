@@ -58,6 +58,9 @@ $(function() {
 		},
 		    minLength: 2,
 		    select: function( event, ui ) {
+		    // Clear out table
+		    $.publish("/ajax/address/update", [[]]);
+
 		    if (ui.item) {
 			requestProperties(ui.item.label);
 			//m.addObject(ui.item.label);

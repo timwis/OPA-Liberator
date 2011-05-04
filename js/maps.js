@@ -32,6 +32,7 @@ $(function initialize() {
 
 	var bounds = new google.maps.LatLngBounds();
 	var windows = [];
+	var foundMarkers = false;
 
 	$.map(objs, function ( obj ) {
 	    var lat = obj.lat;
@@ -49,6 +50,8 @@ $(function initialize() {
 		position: ll,
 		map: map,
 		title: obj.address});
+
+	    foundMarkers = true;
 
 	    google.maps.event.addListener(m, 'click', function() {
 		$.publish("/local/map/select", [ obj ]);
@@ -69,7 +72,7 @@ $(function initialize() {
 	    markers[obj.address] = m;
 	});
 	
-	if (markers.length == 0) {
+	if (foundMarkers == false) {
 	    return;
 	}
 

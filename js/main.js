@@ -57,7 +57,8 @@ $(function() {
 		url: "http://opa.timwis.com/fetch.php", 
 		dataType: "jsonp",
 		data: {
-		    owner: request.term
+		    owner: request.term,
+			limit: 20
 		},
 		success: function( data ) {
 		    if (typeof(data) == "undefined") {
@@ -69,8 +70,8 @@ $(function() {
 
 		    response( $.map( data, function( item ) {
 			return {
-			    label: item.owner, 
-			    value: item.oweer
+			    label: item.owner + " (" + item.count + ")", 
+			    value: item.owner
 			}
 		    }));
 		}
@@ -82,7 +83,7 @@ $(function() {
 	    $.publish("/ajax/address/update", [[]]);
 
 	    if (ui.item) {
-		requestProperties(ui.item.label);
+		requestProperties(ui.item.value);
 	    }
 	},
 	open: function() {

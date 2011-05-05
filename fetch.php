@@ -4,10 +4,11 @@ $dbhandle = null;
 $ajax = false;
 $db['host'] = 'mysql.gocheckbook.com';
 $db['user'] = 'opauser';
-$db['pass'] = '#######';
+$db['pass'] = 'jgqZqe3J';
 $db['name'] = 'opaliberator';
 $input = isset($_GET['owner']) ? $_GET['owner'] : '';
 $exact = isset($_GET['exact']) ? $_GET['exact'] : false;
+$limit = isset($_GET['limit']) ? $_GET['limit'] : 0;
 $callback = isset($_GET['callback']) ? $_GET['callback'] : '';
 $geocoder_base_url = "http://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=";
 
@@ -26,7 +27,7 @@ if($input) {
 	if($exact)
 		echo $callback ? $callback.'('.list_properties($input).')' : list_properties($input);
 	else {
-		$owners = search_owners($input);
+		$owners = search_owners($input, $limit);
 		echo $callback ? $callback.'('.list_owners($owners).')' : list_owners($owners);
 	}
 }

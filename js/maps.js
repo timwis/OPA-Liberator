@@ -63,7 +63,12 @@ $(function initialize() {
 		windows.length = 0;
 
 		var iwin = new google.maps.InfoWindow({
-		    content: '<a href="http://opa.phila.gov/opa.apps/Search/SearchResults.aspx?id=' + obj.tencode + '">' + obj.address + ' Philadelphia PA</a>'});
+		    content:	'<font size="+1"><b>' + obj.address + '</b></font><br />' +
+						'<a href="http://opa.phila.gov/opa.apps/Search/SearchResults.aspx?id=' + obj.tencode + '" target="_blank">OPA # ' + obj.parcel_number + '</a><br /><br />' +
+						'<b>Mailing Address</b><br />' +
+						obj.mail_street + '<br />' +
+						obj.mail_city + ' ' + obj.mail_state + ' ' + obj.mail_zip
+			});
 
 		iwin.open(map, m);
 		windows.push(iwin);
@@ -84,4 +89,3 @@ $(function initialize() {
     });
 	
 });
-

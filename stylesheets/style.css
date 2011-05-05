@@ -11,9 +11,27 @@ body {
     padding-bottom: 20px;
 }
 
+#nav {
+	text-align: center;
+	font-size: 12pt;
+}
+
+	#nav A {
+		color: black;
+	}
+
+		#nav A:hover {
+			text-decoration: none;
+		}
+
+#about {
+	padding: 15px;
+}
+
 #map_canvas {
   width: 100%;
   height: 600px;
+  border: 1px black solid;
 }
 
 #header {
@@ -32,15 +50,16 @@ body {
     text-align:center;
     vertical-align: middle;
     padding-left: 5px;
+	display: inline;
 }
 
 #owner {
-  width: 85%;
+  width: 100%;
 }
 
 #properties {
   width: 200px;
-  height: 475px;
+  height: 500px;
 }
 
 .container {
@@ -51,9 +70,9 @@ body {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
  
-  background: #8b8b8b; /* for non-css3 browsers */
-  filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#7a7a7a'); /* for IE */
-background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#dfdfdf)); /* for webkit browsers */
+  background: #E6E6E6; /*#8b8b8b;*/ /* for non-css3 browsers */
+  /*filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9a9a9', endColorstr='#7a7a7a');*/ /* for IE */
+  background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#dfdfdf)); /* for webkit browsers */
   background: -moz-linear-gradient(top,  #f4f4f4,  #dfdfdf); /* for firefox 3.6+ */
  
 }
@@ -61,3 +80,8 @@ background: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#d
 h1 {
   color: white;
 }
+
+/* Customize the Autocomplete List Items Here
+.ui-menu-item {
+	
+}*/

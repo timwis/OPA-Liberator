@@ -9,7 +9,8 @@ function db_connect($db)
 // TODO: Sanitize enough for MySQL
 // TODO: Min string length (avoid searching for 'a' etc.)
 function sanitize_text($input) {
-	return mysql_real_escape_string(trim($input));
+	// DB records contain html entities (i.e. &amp;). Must convert back from display mode
+	return mysql_real_escape_string(htmlentities(trim($input)));
 }
 
 function generate_tencode($street_code, $house_number, $suffix = '', $unit = '')
@@ -49,17 +50,19 @@ function save_lat_lon($parcel_number, $lat, $lon) {
 }
 
 // Search for owners by name
-function search_owners($input) {
+function search_owners($input, $limit = 0) {
 	$return = array();
 
 	$sql = "SELECT `OwnerName`, COUNT(*)
 			FROM `properties`
 			WHERE `OwnerName` LIKE '%$input%'
-			GROUP BY `OwnerName`";
+			GROUP BY `OwnerName`" . ($limit ? "
+			LIMIT $limit" : "");
 	$query = mysql_query($sql);
 
 	if(mysql_num_rows($query)) {
 		while ($row = mysql_fetch_assoc($query)) {
+			$row['OwnerName'] = html_entity_decode($row['OwnerName']);
 			$return []= $row; // TODO: Is it possible to skip this loop and just fetch a proper array?
 		}
 	}
@@ -101,7 +104,7 @@ function list_properties($owner) {
 				$lat = $row['lat'];
 				$lon = $row['lon'];
 			}
-			else if($lat_lon = get_lat_lon($row['PropertyAddress'].', Philadelphia, PA '.$row['PropertyZipCode'])) {
+			else if($lat_lon = get_lat_lon($row['PropertyAddress'].', Philadelphia, PA '.substr($row['PropertyZipCode'], 0, 5))) { // geocoding breaks if zip is more than 5 chars without hyphen
 				$lat = $lat_lon->{"lat"};
 				$lon = $lat_lon->{"lng"}; // inconsistent
 				save_lat_lon($row['parcel_number'], $lat, $lon);
@@ -110,6 +113,11 @@ function list_properties($owner) {
 			$return []= array(
 				'address' => $row['PropertyAddress'],
 				'tencode' => $tencode,
+				'parcel_number' => $row['parcel_number'],
+				'mail_street' => str_replace('|', '<br />', $row['OwnerMailAdd_Street']),
+				'mail_city' => $row['OwnerMailAdd_City'],
+				'mail_state' => $row['OwnerMailAdd_State'],
+				'mail_zip' => $row['OwnerMaillAdd_Zip'], // typo in field name
 				'lat' => $lat,
 				'lon' => $lon,
 			);

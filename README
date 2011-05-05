@@ -1,1 +1,28 @@
-Hello, World!
+<b><font color="red">Note: This application is still collecting some of the city's properties. It currently contains about 300,000 of 560,000 and is still collecting the rest.</font></b><br /><br />
+
+The OPA Data Liberator was created at <a href="http://phillytechweek.com" target="_blank">Philly Tech Week's</a> <i>Hackathon</i> on April 30, 2011.<br /><br />
+
+This application aims to fill a gap in the City of Philadelphia's Office of Property Assessment (OPA) web site: the ability to search by owner. Currently, the OPA web site allows you to search by address and view the owner information, tax balances, etc. as it is all public record, but it does not allow you to search by owner.<br /><br />
+
+<b>How It Works</b><br />
+We were given a list of properties which we imported into a MySQL database. From there, we created a Ruby script that scrapes the data from the <a href="http://opa.phila.gov/opa.apps/Search/SearchForm.aspx?url=search" target="_blank">OPA Property Search</a> site, and puts it into the MySQL database.<br /><br />
+
+We then created a public front-end (what you're viewing now) with an owner search box. The data you input is sent to the back-end PHP script, which queries the database for all owners that match the specified string. When you select the owner, it sends another query to get all the properties listed with that string as the owner, and geocodes their location if it hasn't already been cached.. The front-end then puts those properties into the select box and plots them on the map with a link to their OPA info page.<br /><br />
+
+<b>Open Data</b><br />
+While this application does not currently utilize any open data, its creation (and subsequent naming) was intended to 'liberate' this data from the OPA web site. The team is engaging in talks with the OPA in hopes that they release the data in a compiled, downloadable format, in line with other data sets on <a href="http://opendataphilly.org" target="_blank">OpenDataPhilly</a>. So far the OPA has been quite receptive. It's up to their IT department now. We'll keep you posted.<br /><br />
+
+The source code is available on <a href="https://github.com/timwis/OPA-Liberator" target="_blank">git hub</a>. (Will have the most up-to-date version on it later tonight)<br /><br />
+
+<b>Credits</b><br />
+<ul>
+<li><a href="mailto:hinz.adam@gmail.com">Adam Hinz</a> - Ruby Scraper Script, Front-End HTML/CSS, Front-End jQuery</li>
+<li><a href="mailto:chengjoanne2@gmail.com">Joanne Cheng</a> - Front-End HTML/CSS, Front-End jQuery, Front-End Mapping</li>
+<li><a href="mailto:tim@timwis.com">Tim Wisniewski</a> - Back-End PHP, Minor Tweaks to Front-End</li>
+<li><a href="mjumbewu@kwawatu.com">Mjumbe Wawatu Poe</a> - Overall Assistance & Inspiration</li>
+<li>Gil (Last Name TBD) - PHP Geocoding Function</li>
+<li><a href="http://technicallyphilly.com">Technically Philly</a> - Putting together Philly Tech Week & The Hackathon</li>
+</ul>
+
+<b>Want to Help?</b><br />
+Are you a programmer or designer interested in open data and civic engagement? Email <a href="mailto:tim@timwis.com">Tim Wisniewski</a> to be notified of future projects like this.

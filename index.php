@@ -12,7 +12,7 @@ function printfile($filename) {
 
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
-<title>OPA Data Liberator</title>
+<title>Philly Property Owner Search</title>
 
  <link  href="http://fonts.googleapis.com/css?family=Allerta+Stencil:regular:regular" rel="stylesheet" type="text/css" > 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
@@ -34,7 +34,7 @@ function printfile($filename) {
   <br />
     <div class="container">
       <div id="header" class="span-24">
-	   <h1>OPA Data Liberator</h1>
+	   <h1>Philly Property Owner Search</h1>
       </div>
       <div class="span-24"><br /></div>
 <?php if($about): ?>
